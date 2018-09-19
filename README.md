@@ -7,3 +7,6 @@ This is a central repository used by the web application to bootstrap the embedd
 testing, and to initialise a fresh (PostgreSQL) database and SolrCloud cluster to be used by either or both flavours of
 Expression Atlas.
 
+In the `db` directory there is a `shared-schema.sql` file that is needed by both Expression Atlas and Single Cell
+Expression Atlas, used to display array designs and design elements of a gene in the [bioentity information
+card](https://github.com/ebi-gene-expression-group/atlas-bioentity-information).
