@@ -1,4 +1,4 @@
-ALTER TABLE experiment ADD species varchar(127) NULL;
+ALTER TABLE experiment ADD species VARCHAR(127) NULL;
 
 UPDATE experiment
 SET species = (SELECT organism FROM experiment_organism

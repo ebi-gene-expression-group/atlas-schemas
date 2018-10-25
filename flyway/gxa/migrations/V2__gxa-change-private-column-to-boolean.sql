@@ -2,8 +2,8 @@ ALTER TABLE experiment
 RENAME COLUMN private TO private_old;
 
 ALTER TABLE experiment
-ADD COLUMN private boolean;
-	
+ADD COLUMN private BOOLEAN;
+
 UPDATE experiment
 SET private = TRUE
 WHERE

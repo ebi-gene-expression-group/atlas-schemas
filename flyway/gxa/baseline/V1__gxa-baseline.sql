@@ -1,27 +1,27 @@
 CREATE TABLE experiment
 (
-	accession varchar(255),
-	type varchar(50),
-	access_key char(36),
-	private varchar(1),
-	last_update timestamp,
-	pubmed_ids varchar(255),
-	title varchar(500),
-	dois varchar(255)
+	accession VARCHAR(255),
+	type VARCHAR(50),
+	access_key CHAR(36),
+	private VARCHAR(1),
+	last_update TIMESTAMP,
+	pubmed_ids VARCHAR(255),
+	title VARCHAR(500),
+	dois VARCHAR(255)
 );
 
 CREATE TABLE experiment_organism
 (
-	organism varchar(255),
-	experiment varchar(255),
-	bioentity_organism varchar(1020)
+	organism VARCHAR(255),
+	experiment VARCHAR(255),
+	bioentity_organism VARCHAR(1020)
 );
 
 CREATE TABLE rnaseq_bsln_ce_profiles
 (
-	experiment varchar(255),
-	identifier varchar(255),
-	ce_identifiers text
+	experiment VARCHAR(255),
+	identifier VARCHAR(255),
+	ce_identifiers TEXT
 );
 
 CREATE TABLE arraydesign
