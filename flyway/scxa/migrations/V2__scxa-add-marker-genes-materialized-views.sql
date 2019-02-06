@@ -8,7 +8,7 @@ CREATE MATERIALIZED VIEW scxa_top_5_marker_genes_per_cluster AS
 WITH DATA;
 
 -- Create table with average expression per k and cluster ID for top 5 marker genes/cluster
-CREATE MATERIALIZED VIEW scxa_marker_genes_stats AS
+CREATE MATERIALIZED VIEW scxa_marker_gene_stats AS
   (SELECT aggregated.experiment_accession,
           aggregated.gene_id,
           aggregated.k_where_marker,
