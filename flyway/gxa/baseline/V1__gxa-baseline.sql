@@ -4,7 +4,7 @@ CREATE TABLE experiment
 	type VARCHAR(50),
 	access_key CHAR(36),
 	private VARCHAR(1),
-	last_update TIMESTAMP,
+	last_update TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
 	pubmed_ids VARCHAR(255),
 	title VARCHAR(500),
 	dois VARCHAR(255)
