@@ -11,10 +11,10 @@ CREATE TABLE scxa_marker_genes
   PRIMARY KEY (gene_id, experiment_accession, k, cluster_id)
 );
 
-CREATE TABLE scxa_experiment
+CREATE TABLE experiment
 (
   accession VARCHAR(255) NOT NULL
-    CONSTRAINT scxa_experiment_pkey
+    CONSTRAINT experiment_pkey
     PRIMARY KEY,
   type VARCHAR(50) NOT NULL,
   species VARCHAR(255) NOT NULL,
@@ -58,14 +58,14 @@ CREATE TABLE scxa_cell_clusters
   PRIMARY KEY (experiment_accession, k, cell_id)
 );
 
-CREATE VIEW scxa_public_experiment AS
+CREATE VIEW public_experiment AS
 (
   SELECT
-    scxa_experiment.accession,
-    scxa_experiment.type,
-    scxa_experiment.last_update
-  FROM scxa_experiment
-  WHERE scxa_experiment.private IS FALSE
+    experiment.accession,
+    experiment.type,
+    experiment.last_update
+  FROM experiment
+  WHERE experiment.private IS FALSE
 );
 
 -- This table replaces the materialised view used in the Postgres DB
