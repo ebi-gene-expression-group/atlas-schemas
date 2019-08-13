@@ -9,7 +9,6 @@ CREATE TABLE experiment
   species VARCHAR(255),
   access_key CHAR(36) NOT NULL,
   private BOOLEAN,
-  load_date TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
   last_update TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
   pubmed_ids VARCHAR(255),
   dois VARCHAR(255)
