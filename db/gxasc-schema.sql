@@ -22,7 +22,6 @@ CREATE TABLE scxa_experiment
   private BOOLEAN DEFAULT TRUE,
   last_update TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
   pubmed_ids VARCHAR(255),
-  title VARCHAR(500),
   dois VARCHAR(255)
 );
 

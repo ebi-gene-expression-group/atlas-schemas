@@ -10,7 +10,6 @@ CREATE TABLE experiment
   access_key CHAR(36) NOT NULL,
   private BOOLEAN,
   last_update TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
-  title VARCHAR(500),
   pubmed_ids VARCHAR(255),
   dois VARCHAR(255)
 );
