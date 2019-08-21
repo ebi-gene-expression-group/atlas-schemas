@@ -35,12 +35,3 @@ CREATE TABLE designelement_mapping
     REFERENCES arraydesign
     ON DELETE CASCADE
 );
-
-CREATE VIEW public_experiment AS
-(
-  SELECT experiment.accession,
-    experiment.type,
-    experiment.last_update
-  FROM experiment
-  WHERE experiment.private = FALSE
-);
