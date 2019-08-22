@@ -1,1 +1,1 @@
-DROP VIEW public_experiment;
+DROP VIEW scxa_public_experiment;
