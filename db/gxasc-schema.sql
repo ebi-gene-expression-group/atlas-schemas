@@ -45,14 +45,26 @@ CREATE TABLE scxa_cell_clusters
 -- This table replaces the materialised view used in the Postgres DB
 CREATE TABLE scxa_marker_gene_stats
 (
-  experiment_accession VARCHAR(255) NOT NULL,
-  gene_id VARCHAR(255) NOT NULL,
-  k_where_marker INTEGER NOT NULL,
-  cluster_id_where_marker INTEGER NOT NULL,
-  cluster_id INTEGER NOT NULL,
-  marker_p_value DOUBLE PRECISION NOT NULL,
-  mean_expression DOUBLE PRECISION NOT NULL,
-  median_expression DOUBLE PRECISION NOT NULL,
-  CONSTRAINT marker_gene_stats_pkey
-  PRIMARY KEY (experiment_accession, gene_id, k_where_marker, cluster_id)
+  experiment_accession varchar(255) not null,
+  gene_id varchar(255) not null,
+  k_where_marker integer not null,
+  cluster_id_where_marker integer not null,
+  cluster_id integer not null,
+  marker_p_value double precision not null,
+  mean_expression float not null,
+  median_expression float not null,
+  constraint scxa_marker_gene_stats_experiment_accession_k_where_marker
+    primary key (experiment_accession, gene_id, k_where_marker, cluster_id_where_marker, cluster_id)
+);
+
+CREATE TABLE scxa_top_5_marker_genes_per_cluster
+(
+  r integer not null,
+	experiment_accession varchar(255) not null,
+	gene_id varchar(255) not null,
+	k integer not null,
+	cluster_id integer not null,
+	marker_probability double precision not null,
+	constraint scxa_top_5_marker_genes_per_cluster_experiment_accession_gene_id_k_cluster_id_pk
+		primary key (experiment_accession, gene_id, k, cluster_id)
 );
