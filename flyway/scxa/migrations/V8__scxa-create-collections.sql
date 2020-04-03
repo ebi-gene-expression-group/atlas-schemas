@@ -1,6 +1,6 @@
 create table collections
 (
-	coll_id serial not null,
+	coll_id varchar default 255 not null,
 	name varchar default 255 not null,
 	description varchar default 255 not null
 );
@@ -20,7 +20,7 @@ create table experiment2collection
 		constraint experiment2collection_experiment_accession_fk
 			references experiment (accession)
 				on delete cascade,
-	coll_id int not null
+	coll_id varchar not null
 		constraint experiment2collection_collections_coll_id_fk
 			references collections (coll_id)
 				on delete cascade,
