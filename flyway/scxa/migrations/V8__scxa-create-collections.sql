@@ -2,8 +2,15 @@ create table collections
 (
 	coll_id varchar default 255 not null,
 	name varchar default 255 not null,
-	description varchar default 255 not null
+	description varchar default 255
 );
+
+create unique index collections_coll_id_uindex
+	on collections (coll_id);
+
+alter table collections
+  add constraint collections_pk
+  		primary key (coll_id);
 
 comment on table collections is 'SCXA Experiment collections';
 
