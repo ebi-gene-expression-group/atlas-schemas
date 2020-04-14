@@ -2,7 +2,8 @@ create table collections
 (
 	coll_id varchar default 255 not null,
 	name varchar default 255 not null,
-	description varchar default 255
+	description varchar default 255,
+	icon bytea
 );
 
 create unique index collections_coll_id_uindex
