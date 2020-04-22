@@ -48,7 +48,6 @@ CREATE TABLE scxa_cell_group
   experiment_accession VARCHAR(255) NOT NULL,
   variable VARCHAR(255) NOT NULL,
   value VARCHAR(255) NOT NULL,
-  CONSTRAINT scxa_cell_group_experiment_accession_variable_value_pk
   UNIQUE (experiment_accession, variable, value)  
 );
 
