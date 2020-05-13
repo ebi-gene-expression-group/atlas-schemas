@@ -35,8 +35,12 @@ CREATE TABLE scxa_cell_group_marker_gene_stats
   gene_id VARCHAR(255) NOT NULL,
   cell_group_id integer references scxa_cell_group(id),
   marker_id integer references scxa_cell_group_marker_genes(id),
-  mean_expression DOUBLE PRECISION,
-  median_expression DOUBLE PRECISION
+  expression_type smallint NOT NULL,
+  mean_expression DOUBLE PRECISION NOT NULL,
+  median_expression DOUBLE PRECISION NOT NULL,
   UNIQUE (gene_id, cell_group_id, marker_id) 
-); 
+);
+
+ALTER TABLE 
+ADD COLUMN new_column_name data_type;
     
