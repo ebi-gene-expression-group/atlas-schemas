@@ -18,10 +18,6 @@ comment on table collections is 'Experiment collections';
 create unique index experiment_accession_uindex
 	on experiment (accession);
 
-alter table experiment
-	add constraint experiment_pk
-		primary key (accession);
-
 create table experiment2collection
 (
 	exp_acc varchar not null
