@@ -2,7 +2,7 @@
 CREATE TABLE scxa_cell_group
 (
   id SERIAL not null PRIMARY KEY,
-  experiment_accession VARCHAR(255) NOT NULL,
+  experiment_accession VARCHAR(255) NOT NULL references experiment(accession) ON DELETE CASCADE,
   variable VARCHAR(255) NOT NULL,
   value VARCHAR(255) NOT NULL,
   UNIQUE (experiment_accession, variable, value)  
