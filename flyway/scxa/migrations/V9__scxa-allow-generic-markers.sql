@@ -36,5 +36,5 @@ CREATE TABLE scxa_cell_group_marker_gene_stats
   expression_type smallint NOT NULL,
   mean_expression DOUBLE PRECISION NOT NULL,
   median_expression DOUBLE PRECISION NOT NULL,
-  UNIQUE (gene_id, cell_group_id, marker_id) 
+  UNIQUE (gene_id, cell_group_id, marker_id, expression_type) 
 );
