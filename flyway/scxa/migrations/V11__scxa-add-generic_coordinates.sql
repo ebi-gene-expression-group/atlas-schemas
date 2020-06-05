@@ -6,6 +6,6 @@ CREATE TABLE scxa_coords
     x DOUBLE PRECISION,
     y DOUBLE PRECISION,
     parameterisation VARCHAR(255) NOT NULL,
-    CONSTRAINT scxa_coords_experiment_accession_method_cell_id_parameterisation_pk
+    CONSTRAINT scxa_coords_experiment_accession_method_cell_id_params_pk
         PRIMARY KEY (experiment_accession, method, cell_id, parameterisation)
 );
