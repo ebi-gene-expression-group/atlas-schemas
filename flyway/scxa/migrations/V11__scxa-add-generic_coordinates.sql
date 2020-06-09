@@ -9,3 +9,5 @@ CREATE TABLE scxa_coords
     CONSTRAINT scxa_coords_experiment_accession_method_cell_id_params_pk
         PRIMARY KEY (experiment_accession, method, cell_id, parameterisation)
 );
+
+CREATE INDEX scxa_coords_experiment_accession_method_param ON scxa_coords(experiment_accession, method, parameterisation)
