@@ -14,7 +14,7 @@ make_flyway_credentials(){
 	HOST=$(echo $dbConnection | sed 's+.*\@\(.*\)/.*+\1+')
 	DB=$(echo $dbConnection | sed 's+.*/\(.*\)+\1+')
 
-	flyway migrate -schemas=$schema -url=jdbc:postgresql://${HOST}:5432/${DB} -user=${USER} -password=${PASS} -locations=filesystem:$( pwd )/usr/local/flyway/${USER}
+	flyway migrate -schemas=$schema -url=jdbc:postgresql://${HOST}:5432/${DB} -user=${USER} -password=${PASS} -locations=filesystem:$( pwd )/usr/local/flyway/${schema}
 
 }
 
