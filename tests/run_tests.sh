@@ -19,10 +19,10 @@ make_flyway_credentials(){
 }
 
 # SCXA
-make_flyway_credentials 'postgresql://scxa:postgresPass@postgres/scxa-test' 'scxa'
+make_flyway_credentials "$dbConnection" 'scxa'
 
 # GXA
-make_flyway_credentials 'postgresql://scxa:postgresPass@postgres/scxa-test' 'gxa'
+make_flyway_credentials "$dbConnection" 'gxa'
 
 if [ "$#" -eq 0 ]; then
 	bats --tap "$(dirname "${BASH_SOURCE[0]}")"
