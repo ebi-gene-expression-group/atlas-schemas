@@ -1,0 +1,2 @@
+
+ALTER TABLE scxa_cell_group DROP CONSTRAINT scxa_cell_group_experiment_accession_fkey;
