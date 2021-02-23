@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
+set -e
+
 scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 export testsDir=$scriptDir
 export PATH=$scriptDir/../flyway:$scriptDir/../tests:$PATH
-
 
 make_flyway_credentials(){
 	dbConnection=$1
@@ -15,7 +16,6 @@ make_flyway_credentials(){
 	DB=$(echo $dbConnection | sed 's+.*/\(.*\)+\1+')
 
 	flyway migrate -schemas=$schema -url=jdbc:postgresql://${HOST}:5432/${DB} -user=${USER} -password=${PASS} -locations=filesystem:$( pwd )/usr/local/flyway/${schema}
-
 }
 
 # SCXA
