@@ -16,6 +16,7 @@ make_flyway_credentials(){
 	DB=$(echo $dbConnection | sed 's+.*/\(.*\)+\1+')
 
 	flyway migrate -schemas=$schema -url=jdbc:postgresql://${HOST}:5432/${DB} -user=${USER} -password=${PASS} -locations=filesystem:$( pwd )/usr/local/flyway/${schema}
+    echo "Flyway status: $?"
 }
 
 # SCXA
