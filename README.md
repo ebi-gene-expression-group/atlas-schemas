@@ -23,3 +23,134 @@ flyway migrate -url=jdbc:postgresql://${HOST}:5432/${DB} -user=${USER} -password
 The [`info`](https://flywaydb.org/documentation/command/info) and
 [`repair`](https://flywaydb.org/documentation/command/repair) commands are helpful to troubleshoot issues (e.g.
 checksum mismatches).
+
+## Common queries
+
+### Select all experiments for a gene
+
+```
+SELECT 
+    experiment_accession 
+FROM 
+    scxa_cell_group_marker_genes m 
+    JOIN scxa_cell_group g ON m.cell_group_id=g.id
+    JOIN experiment e ON g.experiment_accession = e.accession
+WHERE 
+    e.private=FALSE AND 
+    m.gene_id=':gene_id' 
+GROUP BY experiment_accession
+```
+
+### Select clusters for significant genes
+
+```
+SELECT 
+    variable as k, 
+    value as cluster_id 
+FROM 
+    scxa_cell_group g 
+    JON scxa_cell_group_marker_genes m ON g.id = m.cell_group_id
+WHERE(
+    m.gene_id=':gene_id' 
+    AND marker_probability < :threshold AND 
+    g.experiment_accession=':experiment_accession' AND (
+      g.variable=':preferred_K' OR 
+      m.marker_probability IN (
+        SELECT 
+          MIN(marker_probability) 
+        FROM 
+          scxa_cell_group, 
+          scxa_cell_group_marker_genes 
+        WHERE 
+          experiment_accession = ':experiment_accession' AND 
+          gene_id=':gene_id'
+        )
+    )
+)
+```
+
+### Select coordinates with expression of a given gene
+
+```
+SELECT 
+    c.cell_id, 
+    c.x, 
+    c.y, 
+    a.expression_level
+FROM 
+    scxa_coords c  
+    LEFT JOIN scxa_analytics a ON 
+        c.experiment_accession=a.experiment_accession AND 
+        c.cell_id=a.cell_id AND
+        a.gene_id=':gene_id'
+WHERE 
+    c.experiment_accession=':experiment_accession' AND 
+    c.method=':method' AND 
+    c.parameterisation->0->>'perplexity'=':perplexity' 
+```
+
+### Select coordinates with a cell group membership
+
+```
+  SELECT 
+    c.cell_id, 
+    c.x, 
+    c.y, 
+    g.value as cluster_id
+FROM 
+    scxa_cell_group g 
+    JOIN scxa_cell_group_membership m ON
+        g.id = m.cell_group_id AND
+        g.experiment_accession = ':experiment_accession' AND
+        g.variable = ':variable'
+    RIGHT JOIN scxa_coords c ON
+        m.cell_id=c.cell_id AND
+        m.experiment_accession=c.experiment_accession
+    WHERE 
+        c.method=':method' AND
+        c.parameterisation->0->>'perplexity'=':perplexity' AND
+        c.experiment_accession=':experiment_accession'
+```
+
+Starting from the cell group and right-joining to get the coordinates ensures we get coordinates for all cells, even those without cell group memberships. The experiment accession does appear to be required in both parts of the above query.
+
+### Summary stats for cell group markers
+
+```
+SELECT 
+  g.experiment_accession, 
+  m.gene_id, 
+  g.variable as k_where_marker, 
+  h.value as cluster_id_where_marker, 
+  g.value as cluster_id, 
+  m.marker_probability as marker_p_value, 
+  s.mean_expression, s.median_expression 
+FROM
+ 	scxa_cell_group_marker_gene_stats s 
+  JOIN scxa_cell_group g on s.cell_group_id=g.id
+  JOIN scxa_cell_group_marker_genes m ON s.marker_id=m.id
+  JOIN scxa_cell_group h ON m.cell_group_id = h.id 
+WHERE 
+  g.experiment_accession=':experiment_accession' and 
+  m.marker_probability < 0.05 and 
+  g.variable = ':k' and 
+  expression_type=0 
+ORDER BY m.marker_probability
+```
+
+Note: The marker stats table references the cell group table twice, once directly, once indirectly via the marker table (which records the precise grouping in which a gene was a marker).
+
+### Find cell groupings with significant markers
+
+```
+SELECT DISTINCT 
+  h.variable as k_where_marker 
+FROM 
+  scxa_cell_group_marker_genes m, 
+  JOIN scxa_cell_group h ON m.cell_group_id = h.id 
+WHERE 
+  h.experiment_accession=':experiment_accession' 
+  and m.marker_probability < 0.05 
+ORDER BY k_where_marker ASC
+
+
