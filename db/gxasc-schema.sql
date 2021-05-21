@@ -121,3 +121,16 @@ CREATE TABLE scxa_cell_group_marker_gene_stats
   median_expression DOUBLE PRECISION NOT NULL,
   UNIQUE (gene_id, cell_group_id, marker_id, expression_type)
 );
+
+-- scxa_coords table
+
+CREATE TYPE "JSONB" AS TEXT;
+create table scxa_coords
+(
+    experiment_accession varchar(255) not null,
+    method               varchar(255) not null,
+    cell_id              varchar(255) not null,
+    x                    double precision,
+    y                    double precision,
+    parameterisation    JSONB NOT NULL
+);
