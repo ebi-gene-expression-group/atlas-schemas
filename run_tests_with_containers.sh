@@ -10,6 +10,6 @@ docker run --name postgres --net mynet -e POSTGRES_PASSWORD=postgresPass -e POST
 docker run --net mynet -i \
   -v $(pwd)/tests:/usr/local/tests \
   -v $(pwd)/flyway/scxa:/usr/local/flyway/scxa \
-  -v $(pwd)/flyway/gxa:/usr/local/flyway/gxa
+  -v $(pwd)/flyway/gxa:/usr/local/flyway/gxa \
   -e dbConnection=$dbConnection --entrypoint=/usr/local/tests/run_tests.sh \
   quay.io/ebigxa/atlas-schemas-base:1.0
