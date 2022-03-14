@@ -6,12 +6,11 @@ CREATE TABLE scxa_dimension_reduction
     experiment_accession VARCHAR(255) NOT NULL,
     method VARCHAR(255) NOT NULL,
     parameterisation VARCHAR(255) NOT NULL,
-    priority SMALLINT DEFAULT 0 NOT NULL,
-    CONSTRAINT scxa_coords_experiment_accession_method_cell_id_params_pk
-        PRIMARY KEY (experiment_accession, method, cell_id, parameterisation, priority)
+    priority SMALLINT DEFAULT 0 NOT NULL
 );
 
 CREATE INDEX scxa_dimension_reduction_experiment_accession_method_param_priority ON scxa_dimension_reduction(experiment_accession, method, parameterisation, priority);
+CREATE INDEX scxa_dimension_reduction_id ON scxa_dimension_reduction(id);
 
 -- Remove those columns from scxa_coords
 
