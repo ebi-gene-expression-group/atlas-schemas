@@ -36,8 +36,6 @@ INSERT INTO scxa_coords (dimension_reduction_id)
 
 -- Remove those columns from scxa_coords
 
-DROP INDEX scxa_coords_experiment_accession_method_param;
-
 ALTER TABLE scxa_coords
   DROP COLUMN experiment_accession,
   DROP COLUMN method,
