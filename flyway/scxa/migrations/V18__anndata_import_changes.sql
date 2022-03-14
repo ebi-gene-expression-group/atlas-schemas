@@ -42,7 +42,7 @@ ALTER TABLE scxa_coords
   DROP COLUMN method,
   DROP COLUMN parameterisation;
 
+-- Make capitalisation explicit for dimension reductions
 
-
-
-
+UPDATE scxa_dimension_reduction SET method = 't-SNE' where method = 'tsne';
+UPDATE scxa_dimension_reduction SET method = 'UMAP' where method = 'umap';
