@@ -32,7 +32,7 @@ INSERT INTO scxa_coords (dimension_reduction_id)
   FROM scxa_coords LEFT JOIN scxa_dimension_reduction AS sdr ON 
     scxa_coords.experiment_accession = sdr.experiment_accession AND
     scxa_coords.method = sdr.method AND
-    scxa_coords.parameterisation = sdr.parameterisation
+    scxa_coords.parameterisation = sdr.parameterisation;
 
 -- Remove those columns from scxa_coords
 
