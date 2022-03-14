@@ -9,8 +9,8 @@ CREATE TABLE scxa_dimension_reduction
     priority SMALLINT DEFAULT 0 NOT NULL
 );
 
-CREATE INDEX scxa_dimension_reduction_experiment_accession_method_param_priority ON scxa_dimension_reduction(experiment_accession, method, parameterisation, priority);
-CREATE INDEX scxa_dimension_reduction_id ON scxa_dimension_reduction(id);
+CREATE INDEX scxa_dimred_experiment_accession_method_param_priority ON scxa_dimension_reduction(experiment_accession, method, parameterisation, priority);
+CREATE INDEX scxa_dimred_id ON scxa_dimension_reduction(id);
 
 -- Populate with data from the old table
 
