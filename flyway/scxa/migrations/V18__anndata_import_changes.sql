@@ -6,7 +6,8 @@ CREATE TABLE scxa_dimension_reduction
     experiment_accession VARCHAR(255) NOT NULL,
     method VARCHAR(255) NOT NULL,
     parameterisation JSONB DEFAULT NULL,
-    priority SMALLINT DEFAULT 0 NOT NULL
+    priority SMALLINT DEFAULT 0 NOT NULL,
+    UNIQUE (experiment_accession, method, parameterisation)  
 );
 
 CREATE INDEX scxa_dimred_experiment_accession_method_param_priority ON scxa_dimension_reduction(experiment_accession, method, parameterisation, priority);
