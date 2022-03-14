@@ -5,7 +5,7 @@ CREATE TABLE scxa_dimension_reduction
     id SERIAL not null PRIMARY KEY,
     experiment_accession VARCHAR(255) NOT NULL,
     method VARCHAR(255) NOT NULL,
-    parameterisation VARCHAR(255) NOT NULL,
+    parameterisation JSONB DEFAULT NULL,
     priority SMALLINT DEFAULT 0 NOT NULL
 );
 
