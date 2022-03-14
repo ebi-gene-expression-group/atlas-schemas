@@ -14,7 +14,7 @@ CREATE INDEX scxa_dimension_reduction_id ON scxa_dimension_reduction(id);
 
 -- Populate with data from the old table
 
-INSERT INTO scxa_dimension_redution (experiment_accession, method, parameterisation, priority) 
+INSERT INTO scxa_dimension_reduction (experiment_accession, method, parameterisation, priority) 
   SELECT DISTINCT experiment_accession, method, parameterisation, priority FROM scxa_coords;  
 
 -- Add new column
