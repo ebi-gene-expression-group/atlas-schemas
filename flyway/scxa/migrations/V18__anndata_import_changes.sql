@@ -20,7 +20,7 @@ INSERT INTO scxa_dimension_reduction (experiment_accession, method, parameterisa
 -- Add new column
 
 ALTER TABLE scxa_coords
-  ADD COLUMN dimension_reduction_id SMALLINT REFERENCES scxa_dimension_reduction(id) ON DELETE CASCADE,
+  ADD COLUMN dimension_reduction_id SMALLINT REFERENCES scxa_dimension_reduction(id) ON DELETE CASCADE;
 
 -- Add the index for the new foreign key on the coords table
 CREATE_INDEX scxa_coords_dimension_reduction_id ON scxa_coords(dimension_reduction_id);
