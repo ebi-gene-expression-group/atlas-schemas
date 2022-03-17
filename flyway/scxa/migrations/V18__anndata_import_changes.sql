@@ -24,6 +24,7 @@ ALTER TABLE scxa_coords
   ADD COLUMN dimension_reduction_id SMALLINT REFERENCES scxa_dimension_reduction(id) ON DELETE CASCADE;
 
 -- Add the index for the new foreign key on the coords table
+
 CREATE INDEX scxa_coords_dimension_reduction_id ON scxa_coords(dimension_reduction_id);
 
 -- Add the correct references to the new table
