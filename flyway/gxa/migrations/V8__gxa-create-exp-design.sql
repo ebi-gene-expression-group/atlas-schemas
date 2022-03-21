@@ -1,18 +1,19 @@
 CREATE TABLE exp_design
 (
-    experiment_accession VARCHAR(255)
+    accession VARCHAR(255)
         CONSTRAINT exp_design_k
             REFERENCES experiment (accession)
             ON DELETE CASCADE,
-    run VARCHAR(50),
-    sample_type char(50)
-        CONSTRAINT exp_desing_sample_type_check
-            check (sample_type = ANY (ARRAY['characteristic'::bpchar, 'factor'::bpchar])),
+    marray VARCHAR(255),
     sample VARCHAR(255),
-    sample_value VARCHAR(255),
-    ontology_url VARCHAR(255),
+    annot_type char(50)
+        CONSTRAINT exp_design_annot_type_check
+            CHECK (annot_type = ANY (ARRAY['characteristic'::bpchar, 'factor'::bpchar])),
+    annot VARCHAR(255),
+    annot_value VARCHAR(255),
+    annot_ont_URI VARCHAR(255),
     CONSTRAINT exp_design_pk
-        UNIQUE (experiment_accession, sample_type, sample_value)
+        UNIQUE (accession, sample, annot_type)
 );
 
 CREATE TABLE exp_design_column_sequence
