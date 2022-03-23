@@ -1,27 +1,20 @@
-create table exp_design
+CREATE TABLE exp_design
 (
-    sample varchar(255) not null,
-    annot_value varchar(255) not null,
-    annot_ont_URI varchar(255),
-    column_definition integer not null
-        constraint exp_design_exp_design_column_sequence_id_fk
-            references exp_design_column_sequence
-            on delete cascade,
-    id serial not null
-        constraint exp_design_pk
-            primary key
+    sample VARCHAR(255) NOT NULL,
+    annot_value VARCHAR(255) NOT NULL,
+    annot_ont_URI VARCHAR(255),
+    exp_design_column_id INTEGER REFERENCES exp_design_column(id) ON DELETE CASCADE,
+    UNIQUE (sample, exp_design_column_id)
 );
 
-create table exp_design_column
+CREATE TABLE exp_design_column
 (
-    experiment_accession varchar(255) not null
-        constraint exp_design_column_sequence_experiment_accession_fk
-            references experiment (accession)
-            on delete cascade,
-    column_name varchar(255) not null,
-    column_type boolean not null,
-    column_order integer not null,
-    id serial not null
-        constraint exp_design_column_sequence_pk
-            primary key
+    experiment_accession VARCHAR(255) NOT NULL,
+    column_name VARCHAR(255) NOT NULL,
+    is_factor BOOLEAN NOT NULL,
+    column_order INTEGER NOT NULL,
+    id serial NOT NULL
+        CONSTRAINT exp_design_column_sequence_pk
+            PRIMARY KEY,
+    UNIQUE (experiment_accession, column_name, is_factor)
 );
