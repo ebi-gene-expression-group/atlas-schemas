@@ -54,3 +54,6 @@ UPDATE scxa_dimension_reduction SET method = 'UMAP' where method = 'umap';
 
 ALTER TABLE experiment
     ADD COLUMN expression_unit VARCHAR(10) NOT NULL DEFAULT 'CPM';
+
+CREATE INDEX experiment_expression_units
+    ON experiment(expression_unit);
