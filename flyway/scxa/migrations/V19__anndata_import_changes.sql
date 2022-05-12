@@ -49,3 +49,8 @@ ALTER TABLE scxa_coords
 
 UPDATE scxa_dimension_reduction SET method = 't-SNE' where method = 'tsne';
 UPDATE scxa_dimension_reduction SET method = 'UMAP' where method = 'umap';
+
+-- Add an expression units column on experiemnt
+
+ALTER TABLE experiment
+    ADD COLUMN expression_unit VARCHAR(10) NOT NULL DEFAULT 'CPM';
