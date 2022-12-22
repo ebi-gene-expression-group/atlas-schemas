@@ -1,6 +1,6 @@
 CREATE TABLE exp_design_column
 (
-    experiment_accession VARCHAR(255) NOT NULL,
+    experiment_accession VARCHAR(255) CHECK (experiment_accession LIKE 'E-%') NOT NULL,
     column_name VARCHAR(255) NOT NULL,
     sample_type VARCHAR(255) CHECK (sample_type IN ('sample characteristic', 'experimental factor')) NOT NULL,
     column_order INTEGER NOT NULL,
