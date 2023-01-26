@@ -2,7 +2,7 @@ CREATE TABLE exp_design_column
 (
     experiment_accession VARCHAR(255) CHECK (experiment_accession LIKE 'E-%') NOT NULL,
     column_name VARCHAR(255) NOT NULL,
-    sample_type VARCHAR(255) CHECK (sample_type IN ('sample characteristic', 'experimental factor')) NOT NULL,
+    sample_type VARCHAR(255) CHECK (sample_type IN ('characteristic', 'factor')) NOT NULL,
     column_order INTEGER NOT NULL,
     id serial NOT NULL
         CONSTRAINT exp_design_column_sequence_pk
