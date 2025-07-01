@@ -9,6 +9,6 @@ CREATE TABLE gxa_marker_gene
     expression_level FLOAT NOT NULL,
     expression_unit VARCHAR(8) NOT NULL,
     sample_number INTEGER NOT NULL,
-    specificity FLOAT,
+    specificity_score FLOAT,
     CONSTRAINT gxa_marker_gene_pkey PRIMARY KEY (experiment_accession, assay, gene_id)
 );
