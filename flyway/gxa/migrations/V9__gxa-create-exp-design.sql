@@ -5,10 +5,10 @@ CREATE TABLE gxa_marker_gene
     assay_id VARCHAR(255) NOT NULL,
     gene_id VARCHAR(255) NOT NULL,
     gene_name VARCHAR(255) NOT NULL,
-    gene_rank INTEGER NOT NULL,
-    expression_value FLOAT NOT NULL,
+    gene_rank INTEGER,
+    expression_level FLOAT NOT NULL,
     expression_unit VARCHAR(8) NOT NULL,
     sample_number INTEGER NOT NULL,
-    specificity FLOAT NOT NULL,
-    CONSTRAINT gxa_marker_gene_pkey PRIMARY KEY (experiment_accession, assay, gene_id, gene_rank)
+    specificity FLOAT,
+    CONSTRAINT gxa_marker_gene_pkey PRIMARY KEY (experiment_accession, assay, gene_id)
 );
