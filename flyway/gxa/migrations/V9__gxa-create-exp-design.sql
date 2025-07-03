@@ -8,5 +8,5 @@ CREATE TABLE gxa_marker_gene
     expression_unit VARCHAR(8) NOT NULL,
     expression_level FLOAT NOT NULL,
     gene_name VARCHAR(255) NOT NULL,
-    CONSTRAINT gxa_marker_gene_pkey PRIMARY KEY (experiment_accession, assay, gene_id)
+    CONSTRAINT gxa_marker_gene_pkey PRIMARY KEY (experiment_accession, assay, gene_id, expression_unit)
 );
