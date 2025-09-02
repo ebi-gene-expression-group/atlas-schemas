@@ -1,4 +1,2 @@
 ALTER TABLE gxa_marker_gene
 ADD COLUMN assay_id VARCHAR(127) NOT NULL
-  --,
--- ADD COLUMN biotype VARCHAR(127) NULL;
