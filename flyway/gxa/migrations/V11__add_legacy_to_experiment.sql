@@ -1,2 +1,2 @@
 ALTER TABLE experiment
-    ADD COLUMN legacy BOOLEAN;
+    ADD COLUMN legacy BOOLEAN DEFAULT FALSE;
